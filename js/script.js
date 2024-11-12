@@ -42,22 +42,22 @@ const forecastItemsContainer = document.querySelector('.forecast-items-container
 
 const apiKey = 'c19ac12a384b37dd79f6408bf1560726'
 
-searchBtn.addEventListener('click', () =>{
-    if (cityInput.value.trim(cityInput.value) != '') {
-        updateWeatherInfo()
-        cityInput.value= ''
-        cityInput.blur()
+searchBtn.addEventListener('click', (event) => {
+    event.preventDefault();  
+    if (cityInput.value.trim() != '') {
+        updateWeatherInfo(cityInput.value);  
+        cityInput.value = '';  
+        cityInput.blur();  
     }
-})
+});
+
 cityInput.addEventListener('keydown', (event) => {
-    if (event.key == 'Enter' && 
-        cityInput.value.trim() != ''
-    ) {
-        updateWeatherInfo(cityInput.value)
-        cityInput.value= ''
-        cityInput.blur()
+    if (event.key === 'Enter' && cityInput.value.trim() !== '') {
+        updateWeatherInfo(cityInput.value);
+        cityInput.value = '';
+        cityInput.blur();
     }
-})
+});
 
 async function getFetchData(endPoint, city) {
     const apiURL = `https://api.openweathermap.org/data/2.5/${endPoint}?q=${city}&appid=${apiKey}&units=metric`
