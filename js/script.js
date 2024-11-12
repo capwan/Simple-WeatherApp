@@ -42,12 +42,12 @@ const forecastItemsContainer = document.querySelector('.forecast-items-container
 
 const apiKey = 'c19ac12a384b37dd79f6408bf1560726'
 
-searchBtn.addEventListener('click', (event) => {
-    event.preventDefault();  
+searchBtn.addEventListener('click', () => {
+    console.log('Button clicked');  // Debugging log
     if (cityInput.value.trim() != '') {
-        updateWeatherInfo(cityInput.value);  
-        cityInput.value = '';  
-        cityInput.blur();  
+        updateWeatherInfo(cityInput.value);  // Pass the value
+        cityInput.value = '';
+        cityInput.blur();
     }
 });
 
